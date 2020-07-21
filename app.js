@@ -10,15 +10,10 @@ var checkAuth = require("./auth/checkAuth");
 var init = require("./initdb").init;
 var register = require("./controller/registerController").register;
 
-
-require("dotenv").config()
-
-var app = express();
-
-initializePassport(passport)
-
 //Setup Express-App
-
+require("dotenv").config()
+var app = express();
+initializePassport(passport)
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
@@ -45,6 +40,7 @@ app.use((req, res, next) => {
 app.get("/init", init);
 //app.use("/api", checkAuth.isLoggedIn, apiroutes);
 
+//LoginLogoutRegisterRoutes
 app.post("/login", checkAuth.isLoggedOut, passport.authenticate("local"), (req, res) => {
     //Login was succesfull
     res.status(200).json({
@@ -59,8 +55,6 @@ app.delete("/logout", (req, res) => {
 
 app.post("/register", checkAuth.isLoggedOut, register);
 
-
-
 app.get("/checkedIsLogin", (req, res) => {
     if (req.isAuthenticated()) {
         res.status(200).json({
@@ -73,5 +67,21 @@ app.get("/checkedIsLogin", (req, res) => {
     }
 })
 
+app.get("/get_test", (req, res) => {
+    res.status(200).json({
+        result: "get_test succesfull"
+    })
+})
+
+app.post("/post_test", (req, res) => {
+    var data = {
+        add1: req.body.add1 * 1,
+        add2: req.body.add2 * 1
+    }
+    var result = data.add1 + data.add2;
+    res.status(200).json({
+        result: result
+    })
+})
 
 module.exports = app;
