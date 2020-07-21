@@ -40,7 +40,7 @@ const postUser = function (req, res) {
                     isPremium: false,
                     driverBiography: data.driverBiography
                 }).then(() => {
-                    res.status(200).json({
+                    res.status(201).json({
                         message: "Register successfull"
                     })
                 })

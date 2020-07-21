@@ -7,7 +7,12 @@ function isLoggedIn(req, res, next) {
 
 function isLoggedOut(req, res, next) {
     if (req.isAuthenticated()) {
-        res.status(200).json({
+        if (req.url == "/register") {
+            res.status(200);
+        } else {
+            res.status(200);
+        }
+        res.json({
             message: "User already authenticated"
         });
     }
