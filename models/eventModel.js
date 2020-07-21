@@ -1,24 +1,24 @@
-const projectModel = (sequelize, type) => {
-    return sequelize.define("project", {
+const eventModel = (sequelize, type) => {
+    return sequelize.define("event", {
         id: {
             type: type.CHAR(36),
             primaryKey: true,
-            uniqe: true,
+            unique: true,
             defaultValue: type.UUIDV1
         },
-        groupID: {
+        name: {
             type: type.CHAR(36),
             allowNull: false
         },
-        name: {
+        coordinate: {
             type: type.STRING,
             allowNull: false
         },
-        imageJSON: {
-            type: type.STRING,
+        startTime: {
+            type: type.DATE,
             allowNull: false
         }
     });
 };
 
-module.exports = projectModel;
+module.exports = eventModel;

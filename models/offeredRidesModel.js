@@ -1,6 +1,6 @@
-const userGroupRelationModel = (sequelize, type) => {
-    return sequelize.define("userGroupRelation", {
-        groupID: {
+const offeredRidesModel = (sequelize, type) => {
+    return sequelize.define("offeredRides", {
+        rideID: {
             type: type.CHAR(36),
             allowNull: false
         },
@@ -11,4 +11,4 @@ const userGroupRelationModel = (sequelize, type) => {
     });
 };
 
-module.exports = userGroupRelationModel;
+module.exports = offeredRidesModel;

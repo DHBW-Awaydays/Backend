@@ -1,32 +1,32 @@
-const userModel = (sequelize, type) => {
-    return sequelize.define("user", {
+const requestModel = (sequelize, type) => {
+    return sequelize.define("request", {
         id: {
             type: type.CHAR(36),
             primaryKey: true,
             unique: true,
             defaultValue: type.UUIDV1
         },
-        name: {
-            type: type.STRING,
+        fromUserID: {
+            type: type.CHAR(36),
             allowNull: false
         },
-        email: {
-            type: type.STRING,
+        forUserID: {
+            type: type.CHAR(36),
             allowNull: false
         },
-        password: {
-            type: type.STRING,
+        forDriveID: {
+            type: type.CHAR(36),
             allowNull: false
         },
-        isPremium: {
-            type: type.BOOLEAN,
+        NumberRequestedSeats: {
+            type: type.INTEGER,
             allowNull: false
         },
-        driverBiography: {
+        status: {
             type: type.STRING,
             allowNull: false
         }
     });
 };
 
-module.exports = userModel;
+module.exports = requestModel;

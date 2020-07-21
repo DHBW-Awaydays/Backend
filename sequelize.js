@@ -1,9 +1,10 @@
 const Sequelize = require("sequelize");
-const customerModel = require("./models/customerModel");
-const groupModel = require("./models/groupModel");
-const imageModel = require("./models/imageModel");
-const projectModel = require("./models/projectModel");
-const userGroupRelationModel = require("./models/userGroupRelationModel");
+const eventModel = require("./models/eventModel");
+const offeredRidesModel = require("./models/offeredRidesModel");
+const requestedRidesModel = require("./models/requestedRidesModel");
+const requestModel = require("./models/requestModel");
+const reviewModel = require("./models/reviewModel");
+const rideModel = require("./models/rideModel")
 const userModel = require("./models/userModel");
 require("dotenv").config()
 
@@ -15,11 +16,12 @@ const conn = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env
     logging: false
 });
 
-const customer = customerModel(conn, Sequelize);
-const group = groupModel(conn, Sequelize);
-const image = imageModel(conn, Sequelize);
-const project = projectModel(conn, Sequelize);
-const userGroupRelation = userGroupRelationModel(conn, Sequelize);
+const event = eventModel(conn, Sequelize);
+const offeredRides = offeredRidesModel(conn, Sequelize);
+const reqestedRides = requestedRidesModel(conn, Sequelize);
+const request = requestModel(conn, Sequelize);
+const review = reviewModel(conn, Sequelize);
+const ride = rideModel(conn, Sequelize)
 const user = userModel(conn, Sequelize);
 
 conn.sync().then(() => {
@@ -30,10 +32,11 @@ conn.sync().then(() => {
 
 module.exports = {
     conn: conn,
-    customer: customer,
-    group: group,
-    image: image,
-    project: project,
-    userGroupRelation: userGroupRelation,
+    event: event,
+    offeredRides: offeredRides,
+    reqestedRides: reqestedRides,
+    request: request,
+    review: review,
+    ride: ride,
     user: user
 };
