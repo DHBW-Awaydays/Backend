@@ -2,12 +2,17 @@ function isLoggedIn(req, res, next) {
     if (req.isAuthenticated()) {
         return next()
     }
-    res.redirect("/login");
+    res.status(404).send();
 }
 
 function isLoggedOut(req, res, next) {
     if (req.isAuthenticated()) {
-        return res.redirect("/");
+        res.status(200).json({
+            message: "User already authenticated"
+        });
+    }
+    if ((req.url == "/login" || req.url == "/register") && req.isAuthenticated()) {
+        return;
     }
     next();
 }

@@ -1,62 +1,55 @@
 const userModel = require("../sequelize").user;
-const customerModel = require("../sequelize").customer;
 const bcrypt = require("bcrypt");
 const BCRYPT_SALTROUNDS = 12;
 
 const postUser = function (req, res) {
-    //fill requestBody in local data
+    //fill requestBody in local 
     const data = {
-        email: req.body.email,
         name: req.body.name,
+        email: req.body.email,
         password: req.body.password,
-        agentur_id: req.body.agentur_id
+        driverBiography: req.body.driverBiography
     };
     //check if all fields are valid
     for (var key in data) {
         if (data[key] == null || data[key] == "") {
+            if (key == "driverBiography") {
+                continue;
+            }
             res.status(422).json({
                 message: "value in field " + key + " is missing"
             });
         }
     }
-    customerModel.findOne({
+    userModel.findOne({
         where: {
-            id: data.agentur_id
+            email: data.email
         },
         raw: true
-    }).then(result => {
-        if (result == null) {
-            res.status(422).json({
-                message: "illegal agentur_id"
-            });
+    }).then(async user => {
+        if (user != null) {
+            res.status(409).json({
+                message: "email already registered"
+            })
         } else {
-            userModel.findOne({
-                where: {
-                    email: data.email
-                },
-                raw: true
-            }).then(async user => {
-                if (user != null) {
-                    res.status(409).json({
-                        message: "email already registered"
+            await bcrypt.hash(data.password, BCRYPT_SALTROUNDS).then(hash => {
+                userModel.create({
+                    name: data.name,
+                    password: hash,
+                    email: data.email,
+                    isPremium: false,
+                    driverBiography: data.driverBiography
+                }).then(() => {
+                    res.status(200).json({
+                        message: "Register successfull"
                     })
-                } else {
-                    await bcrypt.hash(data.password, BCRYPT_SALTROUNDS).then(hash => {
-                        userModel.create({
-                            name: data.name,
-                            customerID: data.agentur_id,
-                            password: hash,
-                            email: data.email
-                        }).then(result => {
-                            res.redirect("/login");
-                        })
-                    })
-                }
+                })
             })
         }
     })
 
-
 }
 
-module.exports = { register: postUser };
+module.exports = {
+    register: postUser
+};
