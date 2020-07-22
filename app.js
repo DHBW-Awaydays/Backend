@@ -58,25 +58,19 @@ app.post("/register", checkAuth.isLoggedOut, register);
 
 app.get("/checkedIsLogin", (req, res) => {
     if (req.isAuthenticated()) {
-        res.status(200).json({
-            message: "logged in"
-        });
+        res.status(200).send(true)
     } else {
-        res.status(404).json({
-            message: "logged out"
-        });
+        res.status(401).send(false)
     }
 })
 
 app.get("/get_test", (req, res) => {
-    console.log(req.body)
     res.status(200).json({
         result: "get_test succesfull"
     })
 })
 
 app.post("/post_test", (req, res) => {
-    console.log(req.body)
     var data = {
         add1: req.body.add1 * 1,
         add2: req.body.add2 * 1
