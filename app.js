@@ -68,12 +68,14 @@ app.get("/checkedIsLogin", (req, res) => {
 })
 
 app.get("/get_test", (req, res) => {
+    console.log(req.body)
     res.status(200).json({
         result: "get_test succesfull"
     })
 })
 
 app.post("/post_test", (req, res) => {
+    console.log(req.body)
     var data = {
         add1: req.body.add1 * 1,
         add2: req.body.add2 * 1
