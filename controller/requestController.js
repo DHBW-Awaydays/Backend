@@ -6,13 +6,13 @@ const REQ_STATUS_DECLINED = "DECLINED";
 
 
 const postRequest = async (req, res) => {
-    var userID = await (await req.user).id;
-    if (userID === undefined) {
+    if (req.user === undefined) {
         res.status(404).json({
             message: "not logged in"
         })
         return
     }
+    var userID = await (await req.user).id;
     var data = {
         userID: userID,
         rideID: req.body.rideID,
