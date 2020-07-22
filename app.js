@@ -38,7 +38,7 @@ app.use((req, res, next) => {
 
 //Routes
 app.get("/init", init);
-//app.use("/api", checkAuth.isLoggedIn, apiroutes);
+app.use("/api", apiroutes);
 
 //LoginLogoutRegisterRoutes
 app.post("/login", checkAuth.isLoggedOut, passport.authenticate("local"), (req, res) => {

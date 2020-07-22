@@ -162,7 +162,6 @@ async function createEvent3() {
     var name = "Hoffenheim - FC Bayern"
     var coordinate = "Sinsheim"
     var startTime = new Date(2020, 11, 19, 15, 30)
-    console.log(startTime)
     eventModel.create({
         name: name,
         coordinate: coordinate,

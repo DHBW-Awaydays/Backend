@@ -1,7 +1,10 @@
 const router = require("express").Router();
-const userController = require("../controller/userController")
+const userRoutes = require("./userRoutes")
+const rideRoutes = require("./rideRoutes");
 
-router.get("/user", userController.getUser)
+router.use("/user", userRoutes)
+router.use("/ride", rideRoutes)
+
 
 
 module.exports = router
