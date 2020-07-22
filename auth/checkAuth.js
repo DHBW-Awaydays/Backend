@@ -3,7 +3,7 @@ function isLoggedIn(req, res, next) {
         return next()
     }
     res.status(404).send();
-}
+}//sadas
 
 function isLoggedOut(req, res, next) {
     if (req.isAuthenticated()) {
