@@ -195,7 +195,7 @@ async function createRide1() {
     var freeSeats = 1;
     var pricepP = 10.5;
     var rideBiography = "Ich bin ein großer Ramstein-Fan! In meinem Ramsteinmobil fahren wir nahc Zrich!"
-    var occupiedSeats = "{[" + user3ID + ", " + user1ID + "]}"
+    var occupiedSeats = "[" + user3ID + ", " + user1ID + "]"
     rideModel.create({
         targetEventID: targetEventID,
         startCoordinate: startCoordinate,
@@ -220,7 +220,7 @@ async function createRide2() {
     var freeSeats = 1;
     var pricepP = 8;
     var rideBiography = "Der größte Eintracht-Fan aller Zeit hat noch Plätze frei!"
-    var occupiedSeats = "{[" + user3ID + "]}"
+    var occupiedSeats = "[" + user3ID + "]"
     rideModel.create({
         targetEventID: targetEventID,
         startCoordinate: startCoordinate,
@@ -245,7 +245,7 @@ async function createRide3() {
     var freeSeats = 5;
     var pricepP = 15;
     var rideBiography = "Ich bin ein großer Ramstein-Fan! In meinem Ramsteinmobil fahren wir nahc Zrich!"
-    var occupiedSeats = "{[]}"
+    var occupiedSeats = "[]"
     rideModel.create({
         targetEventID: targetEventID,
         startCoordinate: startCoordinate,
