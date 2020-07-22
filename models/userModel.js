@@ -25,6 +25,14 @@ const userModel = (sequelize, type) => {
         driverBiography: {
             type: type.STRING,
             allowNull: false
+        },
+        avgStars: {
+            type: type.DOUBLE,
+            allowNull: false
+        },
+        reviewCount: {
+            type: type.INTEGER,
+            allowNull: false
         }
     });
 };

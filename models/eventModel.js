@@ -7,7 +7,7 @@ const eventModel = (sequelize, type) => {
             defaultValue: type.UUIDV1
         },
         name: {
-            type: type.CHAR(36),
+            type: type.STRING,
             allowNull: false
         },
         coordinate: {

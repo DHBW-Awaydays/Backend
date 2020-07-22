@@ -26,6 +26,10 @@ const rideModel = (sequelize, type) => {
             type: type.INTEGER,
             allowNull: false
         },
+        freeSeats: {
+            type: type.INTEGER,
+            allowNull: false
+        },
         pricepP: {
             type: type.DECIMAL(10, 2),
             allowNull: false
