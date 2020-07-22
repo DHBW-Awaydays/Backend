@@ -33,6 +33,7 @@ app.use((req, res, next) => {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date + ' ' + time;
     console.log(dateTime + " " + req.method + " " + req.url);
+    console.log(req.body)
     next()
 })
 
