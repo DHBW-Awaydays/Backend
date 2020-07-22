@@ -14,11 +14,11 @@ const requestModel = (sequelize, type) => {
             type: type.CHAR(36),
             allowNull: false
         },
-        forDriveID: {
+        forRideID: {
             type: type.CHAR(36),
             allowNull: false
         },
-        NumberRequestedSeats: {
+        numberRequestedSeats: {
             type: type.INTEGER,
             allowNull: false
         },

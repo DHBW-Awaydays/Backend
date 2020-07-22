@@ -64,7 +64,7 @@ async function user1Anlegen() {
 async function user2Anlegen() {
     var name = "Tobias";
     var email = "info@elaspix.com";
-    var password = "MrMdeal";
+    var password = "MrMedal";
     var driverBiography = "Hallo ich bin Tobias!";
     var avgStars = 5
     var reviewCount = 56
